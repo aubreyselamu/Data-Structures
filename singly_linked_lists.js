@@ -57,6 +57,21 @@ class SinglyLinkedList{
         }
         return currentHead;
     }
+
+    unshift(val){
+        newNode = new Node(val)
+        if(!this.head){
+            this.head  = null;
+            this.tail = this.head;
+        } else {
+            //pointing the new node at the head, giving us the connect
+            newNode.next = this.head; 
+            //updating head
+            this.head = newNode;
+        }
+        length ++;
+        return this;
+    }
 }
 
 // var first = new Node("Hi")
