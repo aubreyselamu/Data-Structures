@@ -14,6 +14,7 @@ class SinglyLinkedList{
         this.tail = null;
         this.length = 0;
     }
+
     push(val){
         let newNode = new Node(val)
         if(!this.head){
@@ -26,6 +27,25 @@ class SinglyLinkedList{
         this.length ++;
         return this;
     }
+    
+    pop(){
+        if(!this.head) return undefined;
+        let current = this.head;
+        newTail = current;
+
+        while(current.next){
+            newTail = current;
+            current = current.next;
+        }
+        this.tail = newTail;
+        this.tail.next = null;
+        length --;
+        if(length === 0){
+            this.head = null;
+            this.tail = null;
+        }
+        return current;
+    }
 }
 
 // var first = new Node("Hi")
@@ -34,6 +54,6 @@ class SinglyLinkedList{
 // first.next.next.next = new Node("are")
 // first.next.next.next.next = new Node("you")
 
-var list = new SinglyLinkedList()
+var list = new SinglyLinkedList() 
 list.push("HELLO")
 list.push("GOODBYE")
