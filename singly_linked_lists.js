@@ -31,7 +31,7 @@ class SinglyLinkedList{
     pop(){
         if(!this.head) return undefined;
         let current = this.head;
-        newTail = current;
+        let newTail = current;
 
         while(current.next){
             newTail = current;
@@ -59,7 +59,7 @@ class SinglyLinkedList{
     }
 
     unshift(val){
-        newNode = new Node(val)
+        let newNode = new Node(val)
         if(!this.head){
             this.head  = null;
             this.tail = this.head;
@@ -76,22 +76,43 @@ class SinglyLinkedList{
     get(idx){
         if(idx < 0 || index >= this.length) return null;
         let count = 0;
-        let current = this.head 
+        let current = this.head;
 
         while (count !== index){
             current = current.next;
             count ++;
         }
-        return count
+        return count;
     }
 
     set(idx,val){
         let foundNode = this.get(idx);
         if(foundNode){
-            foundNode.val = val
+            foundNode.val = val;
             return true;
         }
         return false;
+    }
+
+    insert(idx,val){
+        if (idx < 0 || idx > this.length) return false;
+        if(idx === this.length){
+            this.push(val);
+            return true;
+        } 
+        if(idx === 0){
+            this.unshift(val);
+            return true;
+        } 
+
+        let newNode = new Node(val);
+        let previous = this.get(idx -1);
+        let temp = previous.next;
+        previous.next = newNode;
+        newNode.next = temp;
+        this.length ++;
+        return true;
+        
     }
 }
 
