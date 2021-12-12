@@ -72,6 +72,27 @@ class SinglyLinkedList{
         length ++;
         return this;
     }
+
+    get(idx){
+        if(idx < 0 || index >= this.length) return null;
+        let count = 0;
+        let current = this.head 
+
+        while (count !== index){
+            current = current.next;
+            count ++;
+        }
+        return count
+    }
+
+    set(idx,val){
+        let foundNode = this.get(idx);
+        if(foundNode){
+            foundNode.val = val
+            return true;
+        }
+        return false;
+    }
 }
 
 // var first = new Node("Hi")
