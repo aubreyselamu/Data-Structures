@@ -50,4 +50,17 @@ class BinarySearchTree {
         if(!found) return undefined;
         return current;
     }
+    BFS(){
+        let node = this.root;
+        let data = [];
+        let queue = [];
+        queue.push(node);
+        while(queue.length){
+            node = queue.shift();
+            data.push(node.value);
+            if(node.left) queue.push(this.left)
+            if(node.right) queue.push(this.right)
+        }
+        return data
+    }
 }
