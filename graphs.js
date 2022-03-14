@@ -13,4 +13,9 @@ class Graph {
         this.adjacencyList[vertex1].push(vertex2)
         his.adjacencyList[vertex2].push(vertex1)
     }
+
+    removeEdge(vertex1, vertex2){
+        this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(v => v !== vertex2)
+        this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(v => v !== vertex1)
+    }
 }
