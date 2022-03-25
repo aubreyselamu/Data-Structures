@@ -11,7 +11,7 @@ class Graph {
     
     addEdge(vertex1, vertex2){
         this.adjacencyList[vertex1].push(vertex2)
-        his.adjacencyList[vertex2].push(vertex1)
+        this.adjacencyList[vertex2].push(vertex1)
     }
 
     removeEdge(vertex1, vertex2){
@@ -26,5 +26,23 @@ class Graph {
         }
         delete this.adjacencyList[vertex]
 
+    }
+
+    depthFirstRecursive(start){
+        const result = [];
+        const visited = {};
+        const adjacencyList = this.adjacencyList
+
+        function dfs(vertex){
+            if(!vertex) return;
+            visited[vertex] = true;
+            result.push(vertex)
+            adjacencyList[vertex].forEach(neighbor => {
+                if(!visited[neighbor]){
+                    return dfs(neighbor)
+                }
+            })
+        } 
+        return result
     }
 }
